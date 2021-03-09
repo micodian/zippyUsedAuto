@@ -1,0 +1,44 @@
+header {
+    margin: 0;
+    /* border-bottom: 2px solid black; */
+    text-align: center;
+    text-shadow: 2px 2px blue;
+}
+
+header h1 {
+    margin: 0;
+    padding: .5em 0;
+    color: green;
+}
+
+footer {
+    clear: both;
+    margin-top: 1em;
+    /* border-top: 2px solid black; */
+}
+footer p {
+    text-align: center;
+    font-size: 80%;
+    margin: 1em 0;
+}
+.headerColor{
+    color: grey;
+}
+.div-container{
+    display: flex;
+    justify-content: center;
+}
+.dropDown-container{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+.btn-class{
+    margin: 20px;
+    padding: 10px;
+}
+
+#img-container img{
+    width: 100%;
+    height: auto;
+}
