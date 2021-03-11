@@ -5,13 +5,25 @@ require('model/make_db.php');
 require('model/class_db.php');
 require('model/type_db.php');
 
-$make_id=filter_input(INPUT_GET, 'make_id',FILTER_VALIDATE_INT);
-$type_id=filter_input(INPUT_GET, 'type_id',FILTER_VALIDATE_INT);
-$class_id=filter_input(INPUT_GET, 'class_id',FILTER_VALIDATE_INT);
+$make_id=filter_input(INPUT_POST, 'make_id',FILTER_VALIDATE_INT);
+if(!$make_id){
+    echo 'in makes get';
+    $make_id = filter_input(INPUT_GET, 'make_id',FILTER_VALIDATE_INT);
+}
+$type_id=filter_input(INPUT_POST, 'type_id',FILTER_VALIDATE_INT);
+if(!$type_id){
+    echo 'in type get';
+    $type_id = filter_input(INPUT_GET, 'type_id',FILTER_VALIDATE_INT);
+}
+$class_id=filter_input(INPUT_POST, 'class_id',FILTER_VALIDATE_INT);
+if(!$class_id){
+    echo 'in class get';
+    $class_id = filter_input(INPUT_GET, 'class_id',FILTER_VALIDATE_INT);
+}
 
 
 //show all items
-$action = filter_input(INPUT_POST, 'action');
+$action = filter_input(INPUT_POST, 'action',FILTER_SANITIZE_STRING);
 if(!$action){
     $action=filter_input(INPUT_GET,'action',FILTER_SANITIZE_STRING);
     if(!$action){
@@ -25,27 +37,38 @@ if(!$action){
 //     }
 // }
 
-// if($action == 'show_vehicle_list'){
-//     echo 'begin';
-//     $vehicles= get_vehicles();
-//     echo 'after get vehicles';
-//     $makes= get_makes();
-//     echo 'after makes';
-//     include('view/vehicle_list.php');
-// }
+if($action == 'show_vehicle_list'){
+    //echo 'begin';
+    //echo 'after get vehicles';
+    if($type_id){
+        // $vehicles=get_vehicles_by_make($make_id); 
+        $vehicles=get_vehicles_by_type($type_id);
+       
+    }
+    else if($make_id){
+        echo 'entered make index';
+        //$vehicles=get_vehicles_by_class($class_id);
+        $vehicles=get_vehicles_by_make($make_id); 
+        
+    }
+    else if($class_id){
+        echo 'in class index';
+        $vehicles=get_vehicles_by_class($class_id); 
+    }
+    else{
+        //$vehicles=get_vehicles();
+        $vehicles=get_vehicles(); 
+    }
 
-switch($action){
-    case "list_makes":
-        $makes= get_makes();
-        include('view/vehicle_list.php');
-        break;
-    default:
-        $vehicles=get_vehicles();
-        $makes=get_makes();
-        $make_name=get_make_name($make_id);
-        $classes=get_classes();
-        $types=get_types();
-        include('view/vehicle_list.php');
+    //$vehicles=get_vehicles_by_make($make_id);
+    $types=get_types();
+    $makes= get_makes();
+    $classes=get_classes();
+    //$types=get_types();
+    //echo 'after makes';
+    include('view/vehicle_list.php');
 }
+
+
 
 ?>
