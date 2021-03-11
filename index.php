@@ -51,13 +51,13 @@ if($action == 'show_vehicle_list'){
        
     }
     else if($make_id){
-        echo 'entered make index';
+        //echo 'entered make index';
         
         $vehicles=get_vehicles_by_make($make_id,$sort); 
         
     }
     else if($class_id){
-        echo 'in class index';
+        //echo 'in class index';
         $vehicles=get_vehicles_by_class($class_id,$sort); 
     }
     else{
