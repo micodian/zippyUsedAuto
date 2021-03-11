@@ -1,8 +1,9 @@
 <?php 
 
-//get all vehicles
-function get_vehicles(){
+//get all vehicles by sort
+function get_vehicles($sort){
     global $db;
+    if($sort=='price'){
     $query = 'SELECT * FROM vehicles
                  INNER JOIN makes ON
                     vehicles.make_id=makes.make_id
@@ -10,21 +11,39 @@ function get_vehicles(){
                      vehicles.type_id=types.type_id
                  INNER JOIN classes ON
                      vehicles.class_id=classes.class_id       
-                
+                 ORDER BY price DESC
                 
                                          ';
     $statement = $db->prepare($query);
-    //$statement->bindValue(':vehicleID',$vehicleID);
     $statement->execute();
     $vehicles = $statement->fetchAll();
     $statement->closeCursor();
+    }
+    else{
+        $query = 'SELECT * FROM vehicles
+                 INNER JOIN makes ON
+                    vehicles.make_id=makes.make_id
+                 INNER JOIN types ON
+                     vehicles.type_id=types.type_id
+                 INNER JOIN classes ON
+                     vehicles.class_id=classes.class_id       
+                 ORDER BY year DESC
+                
+                                         ';
+    $statement = $db->prepare($query);
+   
+    $statement->execute();
+    $vehicles = $statement->fetchAll();
+    $statement->closeCursor();
+    }
     return $vehicles;
    
 }
 
-function get_vehicles_by_make($make_id){
+//get vehicle-make by sort
+function get_vehicles_by_make($make_id,$sort){
     global $db;
-    if($make_id){
+    if($sort=='price'){
         $query = 'SELECT * FROM vehicles
         INNER JOIN makes ON
            vehicles.make_id=makes.make_id
@@ -33,6 +52,7 @@ function get_vehicles_by_make($make_id){
         INNER JOIN classes ON
             vehicles.class_id=classes.class_id       
          WHERE vehicles.make_id=:make_id
+           ORDER BY price DESC
        
                                 ';
         $statement = $db->prepare($query);
@@ -49,11 +69,11 @@ function get_vehicles_by_make($make_id){
                      vehicles.type_id=types.type_id
                  INNER JOIN classes ON
                      vehicles.class_id=classes.class_id       
-                
-                
+                     WHERE vehicles.make_id=:make_id
+                     ORDER BY year DESC
                                          ';
     $statement = $db->prepare($query);
-    //$statement->bindValue(':vehicleID',$vehicleID);
+    $statement->bindValue(':make_id',$make_id);
     $statement->execute();
     $vehicles = $statement->fetchAll();
     $statement->closeCursor();
@@ -63,9 +83,11 @@ function get_vehicles_by_make($make_id){
    
 }
 
-function get_vehicles_by_type($type_id){
+
+//get vehicle-type by sort
+function get_vehicles_by_type($type_id,$sort){
     global $db;
-    if($type_id){
+    if($sort=='price'){
         $query = 'SELECT * FROM vehicles
                  INNER JOIN makes ON
                     vehicles.make_id=makes.make_id
@@ -74,7 +96,7 @@ function get_vehicles_by_type($type_id){
                  INNER JOIN classes ON
                      vehicles.class_id=classes.class_id       
                   WHERE vehicles.type_id=:type_id
-                
+                  ORDER BY price DESC
                                          ';
     $statement = $db->prepare($query);
     $statement->bindValue(':type_id',$type_id);
@@ -90,11 +112,12 @@ function get_vehicles_by_type($type_id){
                      vehicles.type_id=types.type_id
                  INNER JOIN classes ON
                      vehicles.class_id=classes.class_id       
-                
+                     WHERE vehicles.type_id=:type_id
+                  ORDER BY year DESC
                 
                                          ';
     $statement = $db->prepare($query);
-    //$statement->bindValue(':vehicleID',$vehicleID);
+    $statement->bindValue(':type_id',$type_id);
     $statement->execute();
     $vehicles = $statement->fetchAll();
     $statement->closeCursor();
@@ -104,9 +127,10 @@ function get_vehicles_by_type($type_id){
    
 }
 
-function get_vehicles_by_class($class_id){
+//return class based on sort
+function get_vehicles_by_class($class_id,$sort){
     global $db;
-    if($class_id){
+    if($sort=='price'){
         $query = 'SELECT * FROM vehicles
                  INNER JOIN makes ON
                     vehicles.make_id=makes.make_id
@@ -115,7 +139,7 @@ function get_vehicles_by_class($class_id){
                  INNER JOIN classes ON
                      vehicles.class_id=classes.class_id       
                   WHERE vehicles.class_id=:class_id
-                
+                    ORDER BY price DESC
                                          ';
     $statement = $db->prepare($query);
     $statement->bindValue(':class_id',$class_id);
@@ -131,11 +155,12 @@ function get_vehicles_by_class($class_id){
                      vehicles.type_id=types.type_id
                  INNER JOIN classes ON
                      vehicles.class_id=classes.class_id       
-                
+                     WHERE vehicles.class_id=:class_id
+                    ORDER BY year DESC
                 
                                          ';
     $statement = $db->prepare($query);
-    //$statement->bindValue(':vehicleID',$vehicleID);
+    $statement->bindValue(':class_id',$class_id);
     $statement->execute();
     $vehicles = $statement->fetchAll();
     $statement->closeCursor();
@@ -145,26 +170,7 @@ function get_vehicles_by_class($class_id){
    
 }
 
-function get_vehicles_by_price(){
-    global $db;
-    $query = 'SELECT * FROM vehicles
-                 INNER JOIN makes ON
-                    vehicles.make_id=makes.make_id
-                 INNER JOIN types ON
-                     vehicles.type_id=types.type_id
-                 INNER JOIN classes ON
-                     vehicles.class_id=classes.class_id       
-                ORDER BY price DESC
-                
-                                         ';
-    $statement = $db->prepare($query);
-    //$statement->bindValue(':vehicleID',$vehicleID);
-    $statement->execute();
-    $vehicles_sort_price = $statement->fetchAll();
-    $statement->closeCursor();
-    return $vehicles_sort_price;
-   
-}
+
 
 
 

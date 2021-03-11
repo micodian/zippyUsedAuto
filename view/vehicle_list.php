@@ -40,13 +40,13 @@
                         </select>
 
                         <!-- Classes container -->
-                        <select name="class_id" id="" class="dropDown_selector text-primary">
+                        <select name="class_id" class="dropDown_selector text-primary">
                             <option value="">View All Classes</option>
                             <?php foreach ($classes as $class) : ?>
                                 <?php if($class_id == $class['class_id']) {?>
-                                    <option value="<?= $type['class_id']?>" selected>
+                                    <option value="<?= $class['class_id']?>" selected>
                             <?php }else { ?>
-                                <option value="<?= $type['class_id']?>">
+                                <option value="<?= $class['class_id']?>">
                             <?php } ?>
                                     <?= $class['class'] ?>
                                 </option>
@@ -57,11 +57,11 @@
                      
                     </div>
                     <div class="btn-class btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="sortBy" id="sortBy_price" value="price" autocomplete="off" checked>
-                            <label class="btn btn-outline-secondary" for="sortBy_price">Sort By Price</label>
+                            <input type="radio" class="btn-check" name="sort" id="sort_price" value="price" autocomplete="off" checked>
+                            <label class="btn btn-outline-secondary" for="sort_price">Sort By Price</label>
 
-                            <input type="radio" class="btn-check" name="sortBy" id="sortBy_year" value="year" autocomplete="off">
-                            <label class="btn btn-outline-secondary" for="sortBy_year">Sort By Year</label>  
+                            <input type="radio" class="btn-check" name="sort" id="sort_year" value="year" autocomplete="off">
+                            <label class="btn btn-outline-secondary" for="sort_year">Sort By Year</label>  
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div> 

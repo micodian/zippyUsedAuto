@@ -19,6 +19,11 @@ $class_id=filter_input(INPUT_POST, 'class_id',FILTER_VALIDATE_INT);
 if(!$class_id){
     echo 'in class get';
     $class_id = filter_input(INPUT_GET, 'class_id',FILTER_VALIDATE_INT);
+    //echo $class_id;
+}
+$sort= filter_input(INPUT_POST, 'sort',FILTER_SANITIZE_STRING);
+if(!$sort){
+    $sort=filter_input(INPUT_GET, 'sort',FILTER_SANITIZE_STRING);
 }
 
 
@@ -41,31 +46,29 @@ if($action == 'show_vehicle_list'){
     //echo 'begin';
     //echo 'after get vehicles';
     if($type_id){
-        // $vehicles=get_vehicles_by_make($make_id); 
-        $vehicles=get_vehicles_by_type($type_id);
+      
+        $vehicles=get_vehicles_by_type($type_id,$sort);
        
     }
     else if($make_id){
         echo 'entered make index';
-        //$vehicles=get_vehicles_by_class($class_id);
-        $vehicles=get_vehicles_by_make($make_id); 
+        
+        $vehicles=get_vehicles_by_make($make_id,$sort); 
         
     }
     else if($class_id){
         echo 'in class index';
-        $vehicles=get_vehicles_by_class($class_id); 
+        $vehicles=get_vehicles_by_class($class_id,$sort); 
     }
     else{
-        //$vehicles=get_vehicles();
-        $vehicles=get_vehicles(); 
+       
+        $vehicles=get_vehicles($sort); 
     }
 
-    //$vehicles=get_vehicles_by_make($make_id);
+    
     $types=get_types();
     $makes= get_makes();
     $classes=get_classes();
-    //$types=get_types();
-    //echo 'after makes';
     include('view/vehicle_list.php');
 }
 
