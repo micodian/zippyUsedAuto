@@ -7,17 +7,17 @@ require('model/type_db.php');
 
 $make_id=filter_input(INPUT_POST, 'make_id',FILTER_VALIDATE_INT);
 if(!$make_id){
-    echo 'in makes get';
+    //echo 'in makes get';
     $make_id = filter_input(INPUT_GET, 'make_id',FILTER_VALIDATE_INT);
 }
 $type_id=filter_input(INPUT_POST, 'type_id',FILTER_VALIDATE_INT);
 if(!$type_id){
-    echo 'in type get';
+    //echo 'in type get';
     $type_id = filter_input(INPUT_GET, 'type_id',FILTER_VALIDATE_INT);
 }
 $class_id=filter_input(INPUT_POST, 'class_id',FILTER_VALIDATE_INT);
 if(!$class_id){
-    echo 'in class get';
+    //echo 'in class get';
     $class_id = filter_input(INPUT_GET, 'class_id',FILTER_VALIDATE_INT);
     //echo $class_id;
 }
