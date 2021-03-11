@@ -1,63 +1,71 @@
 <?php include 'header.php'?>
     <!-- Radio button div -->
     <div class="div-container">
-                <div class="btn-class btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                    <label class="btn btn-outline-secondary" for="btnradio1">Sort By Price</label>
-
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-secondary" for="btnradio2">Sort By Year</label>  
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div> 
-                </div>
+        
+                
                 
         </div>
 
         <!-- drop-down container -->
         <div class="dropDown-container">
+        <form action="." method="get">
+            <input type="hidden" name="action" value="show_vehicle_list">
                 <!-- makes container -->
-                <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                View All Makes
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-                </div>
-
+               <select name="make_id" class="dropDown_selector text-primary">
+            
+                    <option value="">View All Makes</option>
+                    <?php foreach ($makes as $make) : ?>
+                        <?php if($make_id == $make['make_id']) {?>
+                            <option value="<?= $make['make_id']?>" selected>
+                    <?php }else { ?>
+                        <option value="<?= $make['make_id']?>">
+                    <?php } ?>
+                            <?= $make['make'] ?>
+                        </option>
+                    <?php endforeach; ?>
+               </select> 
+         
                 <!-- Types container -->
-                <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    View All Types
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-                </div>
+                <select name="type_id" class="dropDown_selector text-primary">
+                    <option value="">View All Types</option>
+                    <?php foreach ($types as $type) : ?>
+                        <?php if($type_id == $type['type_id']) {?>
+                            <option value="<?= $type['type_id']?>" selected>
+                    <?php }else { ?>
+                        <option value="<?= $type['type_id']?>">
+                    <?php } ?>
+                            <?= $type['type'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
 
                 <!-- Classes container -->
-                <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                View All Classes
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-                </div>
+                <select name="class_id" id="" class="dropDown_selector text-primary">
+                    <option value="">View All Classes</option>
+                    <?php foreach ($classes as $class) : ?>
+                        <?php if($class_id == $class['class_id']) {?>
+                            <option value="<?= $type['class_id']?>" selected>
+                    <?php }else { ?>
+                        <option value="<?= $type['class_id']?>">
+                    <?php } ?>
+                            <?= $class['class'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                
             </div>
+            <div class="btn-class btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="sortBy" id="sortBy_price" value="price" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary" for="sortBy_price">Sort By Price</label>
+
+                    <input type="radio" class="btn-check" name="sortBy" id="sortBy_year" value="year" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="sortBy_year">Sort By Year</label>  
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div> 
+            </div>
+          
+            </form>
             <!-- Table container -->
         <div class="container">
             <div class="table-responsive">

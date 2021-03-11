@@ -30,12 +30,23 @@ footer p {
 }
 .dropDown-container{
     display: flex;
-    justify-content: center;
-    margin: 30px;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    margin: 20px 0;
 }
 .btn-class{
     margin: 20px;
     padding: 10px;
+}
+.dropDown_selector{
+    padding: 0 5px;
+    margin: 3px 0;
+    border-radius: 5px;
+    height: 35px;
+    border: 3px lightblue;
+    width: 80vw;
+    font-weight: bold;
 }
 
 #img-container img{
