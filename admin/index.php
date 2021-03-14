@@ -78,86 +78,45 @@ if(!$action){
 
 
 if($action == 'show_vehicle_list'){
-    //echo 'begin';
-    //echo 'after get vehicles';
     if($type_id){
-      
         $vehicles=get_vehicles_by_type($type_id,$sort);
        
     }
     else if($make_id){
-        //echo 'entered make index';
-        
         $vehicles=get_vehicles_by_make($make_id,$sort); 
         
     }
     else if($class_id){
-        //echo 'in class index';
         $vehicles=get_vehicles_by_class($class_id,$sort); 
     }
     else{
-       
         $vehicles=get_vehicles($sort); 
     }
-
-    
     $types=get_types();
     $makes= get_makes();
     $classes=get_classes();
     include('view/vehicle_list.php');
 }
-else if($action=='edit_makes'){
-    $makes=get_makes();
-    include('view/make_list.php');
-}
-else if($action=='edit_types'){
-    $types=get_types();
-    include('view/type_list.php');
-}
-else if($action=='edit_classes'){
-    $classes=get_classes();
-    include('view/class_list.php');
-}
-else if($action=='add_vehicle'){
+
+else if($action=='show_add-vehicle'|| $action=='delete_vehicle' || $action=='add_vehicle' ){
     $types=get_types();
     $makes= get_makes();
     $classes=get_classes();
-    include('view/add_vehicle_form.php');
+    include('controllers/vehicles.php');
 }
-else if($action=='show_add-vehicle'){
-    add_vehicle($year,$price,$vehicleName,$type_id,$class_id,$make_id);
-    //include('view/add_vehicle_form.php');
-    header('Location: .?action=add_vehicle');
-    //redirect('controllers/vehicles.php');
-    //header("Location: controllers/vehicles.php?action=add_vehicle&price=".$price."&year=".$year."&vehicleName=".$vehicleName."&make_id=".$make_id."&class_id=".$class_id."&type_id=".$type_id);
-    
+else if($action == 'add_type'|| $action=='delete_type' || $action=='edit_types'){
+    $types=get_types();
+    include('controllers/types.php');
+ }
+else if($action=='add_make' || $action=='delete_make'|| $action=='edit_makes'){
+    $makes=get_makes();
+    include('controllers/makes.php');
 }
-else if($action == 'add_type'){
-    add_type($type);
-   header('Location: .?action=edit_types');
+elseif ($action=='delete_class'|| $action=='add_class' || $action=='edit_classes') {
+    $classes=get_classes();
+    include('controllers/classes.php');
 }
-else if($action=='add_class'){
-    add_class($class);
-    header('Location: .?action=edit_classes');
-}else if($action=='add_make'){
-    add_make($make);
-    header('Location: .?action=edit_makes');
-}elseif ($action=='delete_type') {
-    delete_type($type_id);
-    header('Location: .?action=edit_types');
-}
-elseif ($action=='delete_class') {
-    delete_class($class_id);
-    header('Location: .?action=edit_classes');
-}
-elseif ($action=='delete_make') {
-    delete_make($make_id);
-    header('Location: .?action=edit_makes');
-}
-else if($action=='delete_vehicle'){
-    delete_vehicle($vehicle_id);
-    header('Location: .?action=show_vehicle_list');
-}
+
 
 
 

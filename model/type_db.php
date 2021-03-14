@@ -1,4 +1,5 @@
 <?php  
+// echo '   in type_db database';
 
 function get_types(){
     global $db;
@@ -39,7 +40,7 @@ function add_type($type){
         $statement->bindValue(':type', $type);
         $statement->execute();
         $statement->closeCursor(); 
-    
+        // return 1;
      
 }
 function delete_type($type_id){

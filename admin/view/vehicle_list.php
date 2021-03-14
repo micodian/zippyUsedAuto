@@ -107,6 +107,8 @@
                     <tbody>
                         <?php foreach ($vehicles as $vehicle) : ?>
                         <tr class="table-active">
+                        <?php if(!$vehicle): echo '<h3>There are no vehicles to display</h3>';?>    
+                        <?php endif ?>
                         <th scope="row"><?php echo $vehicle['year'];?></th>
                         <td><?php echo $vehicle['make'];?></td>
                         <td><?php echo $vehicle['vehicleName'];?></td>
