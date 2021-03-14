@@ -43,6 +43,17 @@ function add_class($class){
      
 }
 
+function delete_class($class_id){
+    global $db;
+    //count to flag item deleted to be returned 
+    $query = 'DELETE FROM classes
+              WHERE class_id = :class_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':class_id', $class_id);
+    $success = $statement->execute();
+    $statement->closeCursor(); 
+}
+
 
 
 ?>

@@ -114,9 +114,10 @@
                         <td><?php echo $vehicle['class'];?></td>
                         <td><?php echo $vehicle['price'];?></td>
                         <td>
-                            <form action="" method="post">
-                                <input type="hidden" name="vehicleID" value="<?php echo $vehicle['vehicleID'] ?>">
-                                <input type="button" class="btn btn-danger" value="Delete">
+                            <form action="." method="post">
+                                <input type="hidden" name="action" value="delete_vehicle">
+                                <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['vehicleID'] ?>">
+                                <input type="submit" class="btn btn-danger" value="Delete">
                             </form>
                         </td>
                             

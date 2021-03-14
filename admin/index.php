@@ -10,6 +10,11 @@ if(!$make_id){
     //echo 'in makes get';
     $make_id = filter_input(INPUT_GET, 'make_id',FILTER_VALIDATE_INT);
 }
+$vehicle_id=filter_input(INPUT_POST, 'vehicle_id',FILTER_VALIDATE_INT);
+if(!$vehicle_id){
+    //echo 'in makes get';
+    $vehicle_id = filter_input(INPUT_GET, 'vehicle_id',FILTER_VALIDATE_INT);
+}
 $type_id=filter_input(INPUT_POST, 'type_id',FILTER_VALIDATE_INT);
 if(!$type_id){
     //echo 'in type get';
@@ -121,7 +126,8 @@ else if($action=='add_vehicle'){
 }
 else if($action=='show_add-vehicle'){
     add_vehicle($year,$price,$vehicleName,$type_id,$class_id,$make_id);
-    include('view/add_vehicle_form.php');
+    //include('view/add_vehicle_form.php');
+    header('Location: .?action=add_vehicle');
     //redirect('controllers/vehicles.php');
     //header("Location: controllers/vehicles.php?action=add_vehicle&price=".$price."&year=".$year."&vehicleName=".$vehicleName."&make_id=".$make_id."&class_id=".$class_id."&type_id=".$type_id);
     
@@ -136,7 +142,23 @@ else if($action=='add_class'){
 }else if($action=='add_make'){
     add_make($make);
     header('Location: .?action=edit_makes');
+}elseif ($action=='delete_type') {
+    delete_type($type_id);
+    header('Location: .?action=edit_types');
 }
+elseif ($action=='delete_class') {
+    delete_class($class_id);
+    header('Location: .?action=edit_classes');
+}
+elseif ($action=='delete_make') {
+    delete_make($make_id);
+    header('Location: .?action=edit_makes');
+}
+else if($action=='delete_vehicle'){
+    delete_vehicle($vehicle_id);
+    header('Location: .?action=show_vehicle_list');
+}
+
 
 
 

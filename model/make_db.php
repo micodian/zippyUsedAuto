@@ -44,6 +44,16 @@ function add_make($make){
     
      
 }
+function delete_make($make_id){
+    global $db;
+    //count to flag item deleted to be returned 
+    $query = 'DELETE FROM makes
+              WHERE make_id = :make_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':make_id', $make_id);
+    $success = $statement->execute();
+    $statement->closeCursor(); 
+}
 
 
 

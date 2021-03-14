@@ -36,9 +36,10 @@
                         
                         
                         <td>
-                            <form action="" method="post">
+                            <form action="." method="post">
+                                <input type="hidden" name="action" value="delete_class">
                                 <input type="hidden" name="class_id" value="<?php echo $class['class_id'] ?>">
-                                <input type="button" class="btn btn-danger" value="Delete">
+                                <input type="submit" class="btn btn-danger" value="Delete">
                             </form>
                         </td>
                             

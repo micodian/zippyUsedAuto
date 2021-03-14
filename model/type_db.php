@@ -42,6 +42,16 @@ function add_type($type){
     
      
 }
+function delete_type($type_id){
+    global $db;
+    //count to flag item deleted to be returned 
+    $query = 'DELETE FROM types
+              WHERE type_id = :type_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':type_id', $type_id);
+    $success = $statement->execute();
+    $statement->closeCursor(); 
+}
 
 
 ?>

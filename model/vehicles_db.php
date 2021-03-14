@@ -191,6 +191,17 @@ function add_vehicle($year,$price,$vehicleName,$type_id,$class_id,$make_id){
      
 }
 
+function delete_vehicle($vehicle_id){
+    global $db;
+    //count to flag item deleted to be returned 
+    $query = 'DELETE FROM vehicles
+              WHERE vehicleID = :vehicle_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':vehicle_id', $vehicle_id);
+    $success = $statement->execute();
+    $statement->closeCursor(); 
+}
+
 
 
 

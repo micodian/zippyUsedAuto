@@ -36,9 +36,10 @@
                         
                         
                         <td>
-                            <form action="" method="post">
+                            <form action="." method="post">
+                                <input type="hidden" name="action" value="delete_make">
                                 <input type="hidden" name="make_id" value="<?php echo $make['make_id'] ?>">
-                                <input type="button" class="btn btn-danger" value="Delete">
+                                <input type="submit" class="btn btn-danger" value="Delete">
                             </form>
                         </td>
                             

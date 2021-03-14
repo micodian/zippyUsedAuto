@@ -36,9 +36,10 @@
                        
                         
                         <td>
-                            <form action="" method="post">
+                            <form action="." method="post">
+                                <input type="hidden" name="action" value="delete_type">
                                 <input type="hidden" name="type_id" value="<?php echo $type['type_id'] ?>">
-                                <input type="button" class="btn btn-danger" value="Delete">
+                                <input type="submit" class="btn btn-danger" value="Delete">
                             </form>
                         </td>
                             
