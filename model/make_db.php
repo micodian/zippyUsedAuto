@@ -1,6 +1,6 @@
 <?php  
 
-echo "     inside make_db";
+//echo "     inside make_db";
 
 function get_makes(){
     global $db;
@@ -27,6 +27,22 @@ function get_make_name($make_id){
     $statement->closeCursor();
     $make_name = $make['make'];
     return $make_name;
+}
+
+function add_make($make){
+    global $db;
+    //count to flag item deleted to be returned 
+  
+        $query = 'INSERT INTO makes
+                 (make)
+              VALUES
+                 (:make)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':make', $make);
+        $statement->execute();
+        $statement->closeCursor(); 
+    
+     
 }
 
 

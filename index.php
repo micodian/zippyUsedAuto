@@ -35,12 +35,7 @@ if(!$action){
         $action='show_vehicle_list';
     }
 }
-// if($action== NULL){
-//     $action=filter_input(INPUT_GET,'action');
-//     if($action==NULL){
-//         $action='show_vehicle_list';
-//     }
-// }
+
 
 if($action == 'show_vehicle_list'){
     //echo 'begin';

@@ -170,7 +170,26 @@ function get_vehicles_by_class($class_id,$sort){
    
 }
 
-
+function add_vehicle($year,$price,$vehicleName,$type_id,$class_id,$make_id){
+    global $db;
+    //count to flag item deleted to be returned 
+  
+        $query = 'INSERT INTO vehicles
+                 (vehicleName, price,year,type_id,class_id,make_id)
+              VALUES
+                 (:vehicleName, :price, :year,:type_id,:class_id,:make_id)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':vehicleName', $vehicleName);
+        $statement->bindValue(':price', $price);
+        $statement->bindValue(':year', $year);
+        $statement->bindValue(':type_id', $type_id);
+        $statement->bindValue(':class_id', $class_id);
+        $statement->bindValue(':make_id', $make_id);
+        $statement->execute();
+        $statement->closeCursor(); 
+    
+     
+}
 
 
 

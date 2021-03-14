@@ -25,6 +25,41 @@ $sort= filter_input(INPUT_POST, 'sort',FILTER_SANITIZE_STRING);
 if(!$sort){
     $sort=filter_input(INPUT_GET, 'sort',FILTER_SANITIZE_STRING);
 }
+$year=filter_input(INPUT_POST, 'year',FILTER_VALIDATE_INT);
+if(!$year){
+    
+    $year = filter_input(INPUT_GET, 'year',FILTER_VALIDATE_INT);
+}
+$price=filter_input(INPUT_POST, 'price',FILTER_VALIDATE_INT);
+if(!$price){
+  
+    $price = filter_input(INPUT_GET, 'price',FILTER_VALIDATE_INT);
+}
+$vehicleName=filter_input(INPUT_POST, 'vehicleName',FILTER_SANITIZE_STRING);
+if(!$vehicleName){
+    
+    $vehicleName = filter_input(INPUT_GET, 'vehicleName',FILTER_SANITIZE_STRING);
+   
+}
+$type=filter_input(INPUT_POST, 'type',FILTER_SANITIZE_STRING);
+if(!$type){
+    
+    $type = filter_input(INPUT_GET, 'type',FILTER_SANITIZE_STRING);
+   
+}
+$class=filter_input(INPUT_POST, 'class',FILTER_SANITIZE_STRING);
+if(!$class){
+    
+    $class = filter_input(INPUT_GET, 'class',FILTER_SANITIZE_STRING);
+   
+}
+
+$make=filter_input(INPUT_POST, 'make',FILTER_SANITIZE_STRING);
+if(!$make){
+    
+    $make = filter_input(INPUT_GET, 'make',FILTER_SANITIZE_STRING);
+   
+}
 
 
 //show all items
@@ -77,6 +112,30 @@ else if($action=='edit_types'){
 else if($action=='edit_classes'){
     $classes=get_classes();
     include('view/class_list.php');
+}
+else if($action=='add_vehicle'){
+    $types=get_types();
+    $makes= get_makes();
+    $classes=get_classes();
+    include('view/add_vehicle_form.php');
+}
+else if($action=='show_add-vehicle'){
+    add_vehicle($year,$price,$vehicleName,$type_id,$class_id,$make_id);
+    include('view/add_vehicle_form.php');
+    //redirect('controllers/vehicles.php');
+    //header("Location: controllers/vehicles.php?action=add_vehicle&price=".$price."&year=".$year."&vehicleName=".$vehicleName."&make_id=".$make_id."&class_id=".$class_id."&type_id=".$type_id);
+    
+}
+else if($action == 'add_type'){
+    add_type($type);
+   header('Location: .?action=edit_types');
+}
+else if($action=='add_class'){
+    add_class($class);
+    header('Location: .?action=edit_classes');
+}else if($action=='add_make'){
+    add_make($make);
+    header('Location: .?action=edit_makes');
 }
 
 

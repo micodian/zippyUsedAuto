@@ -33,7 +33,7 @@
                         <?php foreach ($classes as $class) : ?>
                         <tr class="table-active">
                         <th scope="row"><?php echo $class['class'];?></th>
-                        <td><?php echo $class['class'];?></td>
+                        
                         
                         <td>
                             <form action="" method="post">
@@ -51,11 +51,12 @@
         </div>
         
         <div class="container-fluid">
-            <form action="controllers/types.php" method="post">
+            <form action="." method="post">
+            <input type="hidden" name="action" value="add_class">
                 <label>Name</label>
-                <input type="text" name="class">
+                <input type="text" name="class" required>
                 <label>&nbsp;</label>
-                <input type="button" value="Add Class">
+                <input type="submit" value="Add Class">
             </form>
         </div>
        

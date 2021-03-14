@@ -27,6 +27,22 @@ function get_class_name($class_id){
     return $class_name;
 }
 
+function add_class($class){
+    global $db;
+    //count to flag item deleted to be returned 
+  
+        $query = 'INSERT INTO classes
+                 (class)
+              VALUES
+                 (:class)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':class', $class);
+        $statement->execute();
+        $statement->closeCursor(); 
+    
+     
+}
+
 
 
 ?>

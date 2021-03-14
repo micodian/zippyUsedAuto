@@ -33,7 +33,7 @@
                         <?php foreach ($makes as $make) : ?>
                         <tr class="table-active">
                         <th scope="row"><?php echo $make['make'];?></th>
-                        <td><?php echo $make['make'];?></td>
+                        
                         
                         <td>
                             <form action="" method="post">
@@ -51,11 +51,12 @@
         </div>
         
         <div class="container-fluid">
-            <form action="controllers/makes.php" method="post">
+            <form action="." method="post">
+            <input type="hidden" name="action" value="add_make">
                 <label>Name</label>
-                <input type="text" name="make">
+                <input type="text" name="make" required>
                 <label>&nbsp;</label>
-                <input type="button" value="Add Make">
+                <input type="submit" value="Add Make">
             </form>
         </div>
        

@@ -27,6 +27,21 @@ function get_type_name($type_id){
     return $type_name;
 }
 
+function add_type($type){
+    global $db;
+    //count to flag item deleted to be returned 
+  
+        $query = 'INSERT INTO types
+                 (type)
+              VALUES
+                 (:type)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':type', $type);
+        $statement->execute();
+        $statement->closeCursor(); 
+    
+     
+}
 
 
 ?>

@@ -1,5 +1,5 @@
 <?php include 'header.php'?>
-    <h2>Vehicle Make List</h2>
+    <h2>Vehicle Type List</h2>
     <!-- nav area -->
     <div class="container">
             <ul class="nav">
@@ -33,7 +33,7 @@
                         <?php foreach ($types as $type) : ?>
                         <tr class="table-active">
                         <th scope="row"><?php echo $type['type'];?></th>
-                        <td><?php echo $type['type'];?></td>
+                       
                         
                         <td>
                             <form action="" method="post">
@@ -51,11 +51,12 @@
         </div>
         
         <div class="container-fluid">
-            <form action="controllers/types.php" method="post">
+            <form action="." method="post">
+                <input type="hidden" name="action" value="add_type">
                 <label>Name</label>
-                <input type="text" name="type">
+                <input type="text" name="type" required>
                 <label>&nbsp;</label>
-                <input type="button" value="Add Type">
+                <input type="submit" value="Add Type">
             </form>
         </div>
        
