@@ -1,5 +1,7 @@
 <?php  
 
+echo "     inside make_db";
+
 function get_makes(){
     global $db;
     $query = 'SELECT * FROM makes

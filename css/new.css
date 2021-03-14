@@ -10,6 +10,9 @@ header h1 {
     padding: .5em 0;
     color: green;
 }
+tbody{
+    overflow: auto;
+}
 
 footer {
     clear: both;
@@ -21,6 +24,7 @@ footer p {
     font-size: 80%;
     margin: 1em 0;
 }
+
 .headerColor{
     color: grey;
 }
@@ -48,6 +52,12 @@ footer p {
     width: 80vw;
     font-weight: bold;
 }
+.table-body{
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: visible;
+}
+
 
 #img-container img{
     width: 100%;
