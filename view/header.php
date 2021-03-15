@@ -12,6 +12,21 @@
 </head>
 <body>
     <div class="container">
+        <!-- <div id="slider">
+            <figure>
+                <img src="car.jpg" alt="mustang">
+                <img src="car6.jpg" alt="benz">
+                <img src="car7.jpg" alt="volks">
+                <img src="car2.jpg" alt="bmw">
+                <img src="car.jpg" alt="mustang">
+            </figure>
+
+        </div> -->
+       
+    <!-- header container -->
+    <!-- <div class="container"> -->
+        <header><h1 class="headerColor">Zippy Used Autos</h1></header>
+        <!-- <div id="img-container"><img src="car.jpg" alt="dark mustang"></div> -->
         <div id="slider">
             <figure>
                 <img src="car.jpg" alt="mustang">
@@ -22,9 +37,3 @@
             </figure>
 
         </div>
-       
-    <!-- header container -->
-    <!-- <div class="container"> -->
-        <header><h1 class="headerColor">Zippy Used Autos</h1></header>
-        <!-- <div id="img-container"><img src="car.jpg" alt="dark mustang"></div> -->
-        
