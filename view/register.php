@@ -1,5 +1,5 @@
 <?php include 'header.php' ?>
-    <?php if($firstname): ?>
+    <?php if($firstname ): ?>
         <h1>Thank you for registering,<?php echo $firstname; ?></h1>
         <a href='.' action='show_vehicle_list'>Back To Vehicle List</a>
     <?php else: ?>

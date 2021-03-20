@@ -1,3 +1,4 @@
+
 <?php include 'header.php'?>
     <!-- Radio button div -->
     <div class="div-container">
@@ -8,6 +9,7 @@
 
         <!-- drop-down container -->
         <div class="dropDown-container">
+            
                 <form action="." method="GET" >
                     <input type="hidden" name="action" value="show_vehicle_list">
                         <!-- makes container -->

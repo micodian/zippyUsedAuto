@@ -45,14 +45,18 @@ if(!$action){
         $action='show_vehicle_list';
     }
 }
-if(!$firstname){
-    $firstname= false;
+if($firstname){
+    $_SESSION["userid"]=$firstname;
+    $userid = $_SESSION["userid"];
+}else{
+    $firstname = false;
 }
 
 
 if($action == 'show_vehicle_list'){
     //echo 'begin';
     //echo 'after get vehicles';
+    $userid = $_SESSION["userid"];
     if($type_id){
       
         $vehicles=get_vehicles_by_type($type_id,$sort);
@@ -80,19 +84,11 @@ if($action == 'show_vehicle_list'){
     include('view/vehicle_list.php');
 }
 else if($action=='register'){
-    if($firstname){
-        $_SESSION["userid"]=$firstname;
-        $userid = $_SESSION["userid"];
-        include('view/register.php');
-        
-        
-    }
-    else{
-        include('view/register.php');
-    }
+   include('view/register.php');
     
 }
 else if($action =='logout'){
+    $userid = $_SESSION["userid"];
     include('view/logout.php');
 }
 

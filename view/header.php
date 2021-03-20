@@ -28,13 +28,39 @@
     <!-- <div class="container"> -->
           
 
-        <?php  ?>
-        <a style ="font-size:200%;" href="?action=register">Register</a>
+        <?php
+
+            if(!isset($userid) && ($action != 'register')){
+                echo '<a style ="font-size:200%;" href="?action=register">Register</a>';
+            }
+            else if(isset($userid) && ($action != 'register' || $action != 'logout')){
+                echo "Welcome {$userid} <a href='?action=logout'>Sign Out </a>";
+            }
+        
+        
+        ?>
+        <!-- <a style ="font-size:200%;" href="?action=register">Register</a> -->
 
         <header><h1 class="headerColor">Zippy Used Autos </h1> </header> 
+
+        <?php 
+            if($action== 'show_vehicle_list'){
+                echo '<div id="slider">
+                <figure>
+                    <img src="car.jpg" alt="mustang">
+                    <img src="car6.jpg" alt="benz">
+                    <img src="car7.jpg" alt="volks">
+                    <img src="car2.jpg" alt="bmw">
+                    <img src="car.jpg" alt="mustang">
+                </figure>
+    
+            </div>';
+            }
+        
+        ?>
         
         <!-- <div id="img-container"><img src="car.jpg" alt="dark mustang"></div> -->
-        <div id="slider">
+        <!-- <div id="slider">
             <figure>
                 <img src="car.jpg" alt="mustang">
                 <img src="car6.jpg" alt="benz">
@@ -43,4 +69,4 @@
                 <img src="car.jpg" alt="mustang">
             </figure>
 
-        </div>
+        </div> -->
