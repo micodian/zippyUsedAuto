@@ -1,9 +1,19 @@
 <?php
+$lifetime= 60 * 60 * 24 * 14;
+session_set_cookie_params($lifetime,'/');
+session_start();
+
 require('model/database.php');
 require('model/vehicles_db.php');
 require('model/make_db.php');
 require('model/class_db.php');
 require('model/type_db.php');
+
+$firstname=filter_input(INPUT_POST, 'firstname',FILTER_SANITIZE_STRING);
+if(!$fristname){
+    //echo 'in makes get';
+    $firstname = filter_input(INPUT_GET, 'firstname',FILTER_SANITIZE_STRING);
+}
 
 $make_id=filter_input(INPUT_POST, 'make_id',FILTER_VALIDATE_INT);
 if(!$make_id){
@@ -35,6 +45,9 @@ if(!$action){
         $action='show_vehicle_list';
     }
 }
+if(!$firstname){
+    $firstname= false;
+}
 
 
 if($action == 'show_vehicle_list'){
@@ -65,6 +78,22 @@ if($action == 'show_vehicle_list'){
     $makes= get_makes();
     $classes=get_classes();
     include('view/vehicle_list.php');
+}
+else if($action=='register'){
+    if($firstname){
+        $_SESSION["userid"]=$firstname;
+        $userid = $_SESSION["userid"];
+        include('view/register.php');
+        
+        
+    }
+    else{
+        include('view/register.php');
+    }
+    
+}
+else if($action =='logout'){
+    include('view/logout.php');
 }
 
 

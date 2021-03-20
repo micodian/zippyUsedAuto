@@ -11,6 +11,7 @@
  
 </head>
 <body>
+   
     <div class="container">
         <!-- <div id="slider">
             <figure>
@@ -25,7 +26,13 @@
        
     <!-- header container -->
     <!-- <div class="container"> -->
-        <header><h1 class="headerColor">Zippy Used Autos</h1></header>
+          
+
+        <?php  ?>
+        <a style ="font-size:200%;" href="?action=register">Register</a>
+
+        <header><h1 class="headerColor">Zippy Used Autos </h1> </header> 
+        
         <!-- <div id="img-container"><img src="car.jpg" alt="dark mustang"></div> -->
         <div id="slider">
             <figure>

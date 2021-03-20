@@ -1,3 +1,5 @@
+
+
 header {
     margin: 0;
     /* border-bottom: 2px solid black; */
@@ -10,6 +12,9 @@ header h1 {
     padding: .5em 0;
     color: green;
 }
+/* header a{
+    text-align: right;
+} */
 tbody{
     overflow: auto;
 }
@@ -83,7 +88,6 @@ footer p {
 /* end style */
 
 
-
 .headerColor{
     color: grey;
 }
@@ -116,5 +120,6 @@ footer p {
     overflow-y: scroll;
     overflow-x: visible;
 }
+
 
 
