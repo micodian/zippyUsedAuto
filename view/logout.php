@@ -17,7 +17,7 @@ setcookie($name,'',$expire,$path,$domain,$secure,$httponly);
 ?> 
 <?php include 'header.php'; ?>
 
-        <h1>Thank you for signing out,<?php echo $user_name; ?></h1>
+        <h1>Thank you for signing out,<?php echo $user_name; ?>!</h1>
        
         <a href='.' action='show_vehicle_list'>Back To Vehicle List</a>
 
