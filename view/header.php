@@ -30,11 +30,24 @@
 
         <?php
 
-            if(!isset($userid) && ($action != 'register')){
-                echo '<a style ="font-size:200%;" href="?action=register">Register</a>';
+            
+
+            if(!isset($userid) && ($action != 'register' || $action != 'logout')){
+                if($action=='logout'){
+                    echo '';
+                }
+                else{
+                    echo '<a style ="font-size:200%;" href="?action=register">Register</a>';
+                }
+                // echo '<a style ="font-size:200%;" href="?action=register">Register</a>';
             }
             else if(isset($userid) && ($action != 'register' || $action != 'logout')){
-                echo "Welcome {$userid} <a href='?action=logout'>Sign Out </a>";
+                if($action=='register' || $action == 'logout'){
+                    echo '';
+                }else{
+                    echo "Welcome {$userid} <a href='?action=logout'>Sign Out </a>";
+                }
+                // echo "Welcome {$userid} <a href='?action=logout'>Sign Out </a>";
             }
         
         
