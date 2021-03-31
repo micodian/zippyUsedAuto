@@ -39,7 +39,7 @@
                 else{
                     echo '<a style ="font-size:200%;" href="?action=register">Register</a>';
                 }
-                // echo '<a style ="font-size:200%;" href="?action=register">Register</a>';
+                
             }
             else if(isset($userid) && ($action != 'register' || $action != 'logout')){
                 if($action=='register' || $action == 'logout'){
@@ -47,7 +47,7 @@
                 }else{
                     echo "Welcome {$userid} <a href='?action=logout'>Sign Out </a>";
                 }
-                // echo "Welcome {$userid} <a href='?action=logout'>Sign Out </a>";
+               
             }
         
         
@@ -57,18 +57,18 @@
         <header><h1 class="headerColor">Zippy Used Autos </h1> </header> 
 
         <?php 
-            if($action== 'show_vehicle_list'){
-                echo '<div id="slider">
-                <figure>
-                    <img src="car.jpg" alt="mustang">
-                    <img src="car6.jpg" alt="benz">
-                    <img src="car7.jpg" alt="volks">
-                    <img src="car2.jpg" alt="bmw">
-                    <img src="car.jpg" alt="mustang">
-                </figure>
+            // if($action== 'show_vehicle_list'){
+            //     echo '<div id="slider">
+            //     <figure>
+            //         <img src="car.jpg" alt="mustang">
+            //         <img src="car6.jpg" alt="benz">
+            //         <img src="car7.jpg" alt="volks">
+            //         <img src="car2.jpg" alt="bmw">
+            //         <img src="car.jpg" alt="mustang">
+            //     </figure>
     
-            </div>';
-            }
+            // </div>';
+            //}
         
         ?>
         

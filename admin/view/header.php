@@ -23,4 +23,4 @@
     <!-- header container -->
     <div class="container">
         <header><h1 class="headerColor">Zippy Autos Admin-Page</h1></header>
-        <div id="img-container"><img src="../car.jpg" alt="dark mustang"></div>
+        <!-- <div id="img-container"><img src="../car.jpg" alt="dark mustang"></div> -->
