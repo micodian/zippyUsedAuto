@@ -4,7 +4,13 @@ require('../model/vehicles_db.php');
 require('../model/make_db.php');
 require('../model/class_db.php');
 require('../model/type_db.php');
+require('../model/admin_db.php');
 
+
+
+$username= filter_input(INPUT_POST, 'username',FILTER_SANITIZE_STRING);
+$password= filter_input(INPUT_POST, 'password',FILTER_SANITIZE_STRING);
+$confirm_password= filter_input(INPUT_POST, 'confirm_password',FILTER_SANITIZE_STRING);
 $make_id=filter_input(INPUT_POST, 'make_id',FILTER_VALIDATE_INT);
 if(!$make_id){
     //echo 'in makes get';
