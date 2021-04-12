@@ -7,7 +7,7 @@ switch($action){
             header('Location: .?action=show_vehicle_list');
         }else{
             //show login message
-            $login_message= 'You must login to view this message.';
+            $login_message= 'Incorrect credentials/Please Login';
             include('view/login.php');
         }
         break;
