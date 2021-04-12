@@ -19,6 +19,12 @@
         <li class="nav-item">
             <a class="nav-link" href=".?action=edit_classes">View/Edit Vehicle Classes</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href=".?action=show_register">Register New Admin User</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=".?action=logout">Logout</a>
+        </li>
         </ul>
     </div>
 

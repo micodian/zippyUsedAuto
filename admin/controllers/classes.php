@@ -9,8 +9,10 @@ switch ($action) {
     case 'delete_class':
         delete_class($class_id);
         header('Location: .?action=edit_classes');
+        
     case 'edit_classes':
-        include('view/class_list.php');     
+        include('view/class_list.php');  
+          
     default:
         # code...
         break;

@@ -1,22 +1,7 @@
 <?php include 'header.php'?>
     <h2>Vehicle Class List</h2>
     <!-- nav area -->
-    <div class="container">
-            <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href=".?action=show_vehicle_list">Full Vehicle List</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href=".?action=add_vehicle">Add Vehicle</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href=".?action=edit_makes">View/Edit Vehicle Makes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href=".?action=edit_types">View/Edit Vehicle Types</a>
-        </li>
-        </ul>
-    </div>
+   
    
                 
             <!-- Table container -->

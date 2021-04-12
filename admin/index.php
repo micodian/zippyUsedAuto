@@ -1,10 +1,15 @@
 <?php
+$lifetime= 60 * 60 * 24 * 14;
+session_set_cookie_params($lifetime,'/');
+session_start();
+
 require('../model/database.php');
+require('../model/admin_db.php');
 require('../model/vehicles_db.php');
 require('../model/make_db.php');
 require('../model/class_db.php');
 require('../model/type_db.php');
-require('../model/admin_db.php');
+
 
 
 
@@ -121,6 +126,9 @@ else if($action=='add_make' || $action=='delete_make'|| $action=='edit_makes'){
 elseif ($action=='delete_class'|| $action=='add_class' || $action=='edit_classes') {
     $classes=get_classes();
     include('controllers/classes.php');
+}
+elseif($action=='show_login' || $action=='show_register' || $action=='login' || $action=='register' || $action=='logout'){
+    include('controllers/admin.php');
 }
 
 

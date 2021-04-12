@@ -1,16 +1,27 @@
 <?php include 'header.php'?>
-<form>
+<?php 
+if(isset($errors)){
+  foreach ($errors as $error) {
+    echo $error;
+  }
+}
+
+?>
+<form action="." method="POST">
+  <input type="hidden" name="action" value="register">
   <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Username">
+    <label >Username</label>
+    <input type="text" class="form-control" name="username" placeholder="Enter Username">
   </div>
   <div class="form-group">
-    <label for="Password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password">
+    <label >Password</label>
+    <input type="password" class="form-control"  name="password" placeholder="Password">
   </div>
   <div class="form-group">
-    <label for="confirmPassword">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password">
+    <label >Confirm Password</label>
+    <input type="password" class="form-control"  name="confirm_password" placeholder="confirm password">
   </div>
-  <button type="submit" class="btn btn-primary">Register</button>
+  <button class="btn btn-primary">Register</button>
 </form>
+
+<?php include 'footer.php' ?>

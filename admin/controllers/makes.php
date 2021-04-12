@@ -11,8 +11,10 @@ switch ($action) {
     case 'delete_make':
         delete_make($make_id);
         header('Location: .?action=edit_makes');
+        
     case 'edit_makes':
         include('view/make_list.php');   
+        
     default:
         # code...
         break;

@@ -10,8 +10,10 @@ switch ($action) {
     case 'delete_type':
         delete_type($type_id);
         header('Location: .?action=edit_types');
+        
     case 'edit_types':
         include('view/type_list.php');
+        
     default:
         # code...
         break;
