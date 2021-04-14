@@ -5,6 +5,10 @@ class Database{
     // private static $username= 'root';
     // private static $password='';
     // private static $db;
+
+    
+   
+
     private static $dbname;
     private static $host;
     private static $username;
@@ -13,17 +17,29 @@ class Database{
     private static $db;
 
 
+    private static $dbparts;
+    
+
+
     private function __construct(){
-        self::$host =getenv('SQL_HOST')? getenv('SQL_HOST'): 'localhost';
-        self::$dbname =getenv('SQL_DB')? getenv('SQL_DB'): 'zippyusedautos';
-        self::$username =getenv('SQL_USER')? getenv('SQL_USER'): 'root';
-        self::$password =getenv('SQL_PW')? getenv('SQL_PW'): '';
-        self::$dsn ='mysql:host=' .self::$host.';dbname=' . self::$dbname;
+        // $this->setDbparts();
+        // self::$host =self::$dbparts['host']? self::$dbparts['host']: 'localhost';
+        // self::$dbname =ltrim(self::$dbparts['path'],'/')? ltrim(self::$dbparts['path'],'/'): 'zippyusedautos';
+        // self::$username =self::$dbparts['user']?self::$dbparts['user']: 'root';
+        // self::$password =self::$dbparts['pass']? self::$dbparts['pass']: '';
+        // self::$dsn ='mysql:host=' .self::$host.';dbname=' . self::$dbname;
     }
     public static function getDB(){
+        self::setDbparts();
+        self::$host = self::$dbparts['host'];
+        self::$username = self::$dbparts['user'];
+        self::$password = self::$dbparts['pass'];
+        self::$dbname = ltrim(self::$dbparts['path'],'/'); 
+        self::$dsn = "mysql:host=self::$host;dbname=self::$dbname";
         if(!isset(self::$db)){
             try {
                 self::$db = new PDO(self::$dsn, self::$username, self::$password);
+                echo 'connection good';
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
                 include('view/error.php');
@@ -32,9 +48,21 @@ class Database{
         }
         return self::$db;
     }
+
+    public static function setDbparts(){
+        $url = getenv('JAWSDB_URL');
+        self::$dbparts = parse_url($url);
+        echo 'in dbparts';
+        //return self::$dbparts;
+    }
 }
-$database = new Database();
-    // $url = getenv('JAWSDB_URL');
+//$database = new Database();
+   
+
+
+
+
+// $url = getenv('JAWSDB_URL');
     // $dbparts = parse_url($url);
 
     // $hostname = $dbparts['host'];
