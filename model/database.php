@@ -37,10 +37,12 @@ class Database{
     public static function getDB(){
         
         if(!isset(self::$db)){
+           
             try {
-                $db = new PDO('mysql:host='.self::$hostname.';dbname='.self::$database, self::$username, self::$password);
+                // self::$db=new mysqli(self::$hostname,self::$username,self::$password,self::$database);
+                self::$db = new PDO('mysql:host='.self::$hostname.';dbname='.self::$database, self::$username, self::$password);
                 // set the PDO error mode to exception
-                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //echo "Connected successfully";
                 }
             catch(PDOException $e)
