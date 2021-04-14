@@ -38,7 +38,7 @@ class Database{
         
         if(!isset(self::$db)){
             try {
-                $db = new PDO("mysql:host=self::$hostname;dbname=self::$database", self::$username, self::$password);
+                $db = new PDO('mysql:host='.self::$hostname.';dbname='.self::$database, self::$username, self::$password);
                 // set the PDO error mode to exception
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //echo "Connected successfully";
