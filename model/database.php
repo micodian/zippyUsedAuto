@@ -6,14 +6,18 @@ class Database{
     // private static $password='';
     // private static $db;
 
-    
-   
-
-    private static $dbname;
-    private static $host;
+    private static $url;
+    private static $dbparts;
+    private static $hostname;
     private static $username;
-    private static $password;
-    private static $dsn;
+    private static $password ;
+    private static $database ;
+
+    // private static $dbname;
+    // private static $host;
+    // private static $username;
+    // private static $password;
+    // private static $dsn;
     private static $db;
 
 
@@ -22,31 +26,43 @@ class Database{
 
 
     private function __construct(){
-        
-        self::$host =getenv('DB_HOST')? getenv('DB_HOST'): 'localhost';
-        self::$dbname =getenv('SQL_DB')? getenv('SQL_DB'): 'zippyusedautos';
-        self::$username =getenv('DB_USER')?getenv('DB_USER'): 'root';
-        self::$password =getenv('DB_PASS')? getenv('DB_PASS'): '';
-        self::$dsn ='mysql:host=' . self::$host . ';dbname=' . self::$dbname;
+        self::$url = getenv('JAWSDB_URL');
+        self::$dbparts = parse_url(self::$url);
+        self::$hostname = self::$dbparts['host'];
+        self::$username = self::$dbparts['user'];
+        self::$passsword = self::$dbparts['pass'];
+        self::$database = ltrim(self::$dbparts['path'],'/');
+        //self::$dsn ='mysql:host='.self::$host.';dbname='.self::$dbname;
     }
     public static function getDB(){
         
         if(!isset(self::$db)){
             try {
-                self::$db = new PDO(self::$dsn, self::$username, self::$password);
-                echo 'connection good';
-            } catch (PDOException $e) {
-                $error_message = $e->getMessage();
-                include('view/error.php');
-                exit();
-            }
+                $db = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+                // set the PDO error mode to exception
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //echo "Connected successfully";
+                }
+            catch(PDOException $e)
+                {
+                echo "Connection failed: " . $e->getMessage();
+                }
+
+            // try {
+            //     self::$db = new PDO(self::$dsn, self::$username, self::$password);
+            //     //echo 'connection good';
+            // } catch (PDOException $e) {
+            //     $error =$e->getMessage();
+            //     include('view/error.php');
+            //     exit();
+            // }
         }
         return self::$db;
     }
 
    
 }
-$database = new Database();
+//$database = new Database();
    
 
 
