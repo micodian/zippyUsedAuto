@@ -18,7 +18,7 @@ class Database{
         self::$dbname =getenv('SQL_DB')? getenv('SQL_DB'): 'zippyusedautos';
         self::$username =getenv('SQL_USER')? getenv('SQL_USER'): 'root';
         self::$password =getenv('SQL_PW')? getenv('SQL_PW'): '';
-        self::$dsn ='mysql:host' . ';$dbname' . self::$dbname;
+        self::$dsn ='mysql:host=' .self::$host.';dbname=' . self::$dbname;
     }
     public static function getDB(){
         if(!isset(self::$db)){
