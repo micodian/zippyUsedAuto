@@ -17,25 +17,20 @@ class Database{
     private static $db;
 
 
-    private static $dbparts;
+    
     
 
 
     private function __construct(){
-        // $this->setDbparts();
-        // self::$host =self::$dbparts['host']? self::$dbparts['host']: 'localhost';
-        // self::$dbname =ltrim(self::$dbparts['path'],'/')? ltrim(self::$dbparts['path'],'/'): 'zippyusedautos';
-        // self::$username =self::$dbparts['user']?self::$dbparts['user']: 'root';
-        // self::$password =self::$dbparts['pass']? self::$dbparts['pass']: '';
-        // self::$dsn ='mysql:host=' .self::$host.';dbname=' . self::$dbname;
+        
+        self::$host =getenv('DB_HOST')? getenv('DB_HOST'): 'localhost';
+        self::$dbname =getenv('SQL_DB')? getenv('SQL_DB'): 'zippyusedautos';
+        self::$username =getenv('DB_USER')?getenv('DB_USER'): 'root';
+        self::$password =getenv('DB_PASS')? getenv('DB_PASS'): '';
+        self::$dsn ='mysql:host=' . self::$host . ';dbname=' . self::$dbname;
     }
     public static function getDB(){
-        self::setDbparts();
-        self::$host = self::$dbparts['host'];
-        self::$username = self::$dbparts['user'];
-        self::$password = self::$dbparts['pass'];
-        self::$dbname = ltrim(self::$dbparts['path'],'/'); 
-        self::$dsn = "mysql:host=self::$host;dbname=self::$dbname";
+        
         if(!isset(self::$db)){
             try {
                 self::$db = new PDO(self::$dsn, self::$username, self::$password);
@@ -49,14 +44,9 @@ class Database{
         return self::$db;
     }
 
-    public static function setDbparts(){
-        $url = getenv('JAWSDB_URL');
-        self::$dbparts = parse_url($url);
-        echo 'in dbparts';
-        //return self::$dbparts;
-    }
+   
 }
-//$database = new Database();
+$database = new Database();
    
 
 
