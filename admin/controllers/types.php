@@ -4,11 +4,11 @@
 switch ($action) {
     case 'add_type':
         # code...
-        add_type($type);
+        TypeDB::add_type($type);
         header('Location: .?action=edit_types');
         break;
     case 'delete_type':
-        delete_type($type_id);
+        TypeDB::delete_type($type_id);
         header('Location: .?action=edit_types');
         
     case 'edit_types':
@@ -18,6 +18,5 @@ switch ($action) {
         # code...
         break;
 }
-
 
 ?>

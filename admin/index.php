@@ -90,41 +90,41 @@ if(!$action){
 
 if($action == 'show_vehicle_list'){
     if($type_id){
-        $vehicles=get_vehicles_by_type($type_id,$sort);
+        $vehicles=VehicleDB::get_vehicles_by_type($type_id,$sort);
        
     }
     else if($make_id){
-        $vehicles=get_vehicles_by_make($make_id,$sort); 
+        $vehicles=VehicleDB::get_vehicles_by_make($make_id,$sort); 
         
     }
     else if($class_id){
-        $vehicles=get_vehicles_by_class($class_id,$sort); 
+        $vehicles=VehicleDB::get_vehicles_by_class($class_id,$sort); 
     }
     else{
-        $vehicles=get_vehicles($sort); 
+        $vehicles=VehicleDB::get_vehicles($sort); 
     }
-    $types=get_types();
-    $makes= get_makes();
-    $classes=get_classes();
+    $types=TypeDB::get_types();
+    $makes= MakeDB::get_makes();
+    $classes=ClassDB::get_classes();
     include('view/vehicle_list.php');
 }
 
 else if($action=='show_add-vehicle'|| $action=='delete_vehicle' || $action=='add_vehicle' ){
-    $types=get_types();
-    $makes= get_makes();
-    $classes=get_classes();
+    $types=TypeDB::get_types();
+    $makes= MakeDB::get_makes();
+    $classes=ClassDB::get_classes();
     include('controllers/vehicles.php');
 }
 else if($action == 'add_type'|| $action=='delete_type' || $action=='edit_types'){
-    $types=get_types();
+    $types=TypeDB::get_types();
     include('controllers/types.php');
  }
 else if($action=='add_make' || $action=='delete_make'|| $action=='edit_makes'){
-    $makes=get_makes();
+    $makes=MakeDB::get_makes();
     include('controllers/makes.php');
 }
 elseif ($action=='delete_class'|| $action=='add_class' || $action=='edit_classes') {
-    $classes=get_classes();
+    $classes=ClassDB::get_classes();
     include('controllers/classes.php');
 }
 elseif($action=='show_login' || $action=='show_register' || $action=='login' || $action=='register' || $action=='logout'){

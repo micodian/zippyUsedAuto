@@ -3,11 +3,11 @@
 switch ($action) {
     case 'show_add-vehicle':
         # code...
-        add_vehicle($year,$price,$vehicleName,$type_id,$class_id,$make_id);
+        VehicleDB::add_vehicle($year,$price,$vehicleName,$type_id,$class_id,$make_id);
         header('Location: .?action=add_vehicle');
         break;
     case 'delete_vehicle':
-        delete_vehicle($vehicle_id);
+        VehicleDB::delete_vehicle($vehicle_id);
         header('Location: .?action=show_vehicle_list');
         
     case 'add_vehicle':
@@ -17,8 +17,5 @@ switch ($action) {
         # code...
         break;
 }
-
-
-
 
 ?>

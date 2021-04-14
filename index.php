@@ -59,28 +59,28 @@ if($action == 'show_vehicle_list'){
     $userid = $_SESSION["userid"];
     if($type_id){
       
-        $vehicles=get_vehicles_by_type($type_id,$sort);
+        $vehicles=VehicleDB::get_vehicles_by_type($type_id,$sort);
        
     }
     else if($make_id){
         //echo 'entered make index';
         
-        $vehicles=get_vehicles_by_make($make_id,$sort); 
+        $vehicles=VehicleDB::get_vehicles_by_make($make_id,$sort); 
         
     }
     else if($class_id){
         //echo 'in class index';
-        $vehicles=get_vehicles_by_class($class_id,$sort); 
+        $vehicles=VehicleDB::get_vehicles_by_class($class_id,$sort); 
     }
     else{
        
-        $vehicles=get_vehicles($sort); 
+        $vehicles=VehicleDB::get_vehicles($sort); 
     }
 
     
-    $types=get_types();
-    $makes= get_makes();
-    $classes=get_classes();
+    $types=TypeDB::get_types();
+    $makes= MakeDB::get_makes();
+    $classes=ClassDB::get_classes();
     include('view/vehicle_list.php');
 }
 else if($action=='register'){
@@ -91,6 +91,7 @@ else if($action =='logout'){
     $userid = $_SESSION["userid"];
     include('view/logout.php');
 }
+
 
 
 

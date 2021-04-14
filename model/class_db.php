@@ -1,21 +1,19 @@
 <?php  
 
-function get_classes(){
-    global $db;
-    $query = 'SELECT * FROM classes
-                       ORDER BY class_id';
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $classes = $statement->fetchAll();
-    $statement->closeCursor();
-    return $classes;
-}
+class ClassDB{
+    public static function get_classes(){
+        $db = Database::getDB();
+        $query = 'SELECT * FROM classes
+                        ORDER BY class_id';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $classes = $statement->fetchAll();
+        $statement->closeCursor();
+        return $classes;
+    }
 
-
-function add_class($class){
-    global $db;
-    //count to flag item deleted to be returned 
-  
+    public static function add_class($class){
+        $db = Database::getDB();
         $query = 'INSERT INTO classes
                  (class)
               VALUES
@@ -23,20 +21,19 @@ function add_class($class){
         $statement = $db->prepare($query);
         $statement->bindValue(':class', $class);
         $statement->execute();
-        $statement->closeCursor(); 
-    
-     
-}
+        $statement->closeCursor();
 
-function delete_class($class_id){
-    global $db;
-    //count to flag item deleted to be returned 
-    $query = 'DELETE FROM classes
+    }
+    public static function delete_class($class_id){
+        $db = Database::getDB();
+        $query = 'DELETE FROM classes
               WHERE class_id = :class_id';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':class_id', $class_id);
-    $success = $statement->execute();
-    $statement->closeCursor(); 
+        $statement = $db->prepare($query);
+        $statement->bindValue(':class_id', $class_id);
+        $success = $statement->execute();
+        $statement->closeCursor(); 
+
+    }
 }
 
 
